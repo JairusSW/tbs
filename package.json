@@ -1,0 +1,25 @@
+{
+  "name": "tbs",
+  "version": "0.1.0",
+  "description": "Speedy, simplistic, and slim schema-centered ser/de",
+  "types": "assembly/index.ts",
+  "author": "Jairus Tanaka",
+  "contributors": [],
+  "license": "MIT",
+  "scripts": {},
+  "dependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JairusSW/tbs.git"
+  },
+  "keywords": [
+    "tbs",
+    "serialize",
+    "deserialize"
+  ],
+  "bugs": {
+    "url": "https://github.com/JairusSW/tbs/issues"
+  },
+  "homepage": "https://github.com/JairusSW/tbs#readme",
+  "type": "module"
+}
