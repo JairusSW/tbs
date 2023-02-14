@@ -1,0 +1,12 @@
+{
+    "projectName": "Tbs",
+    "languages": [{
+        "id": "tbs",
+        "grammar": "src/language-server/tbs.langium",
+        "fileExtensions": [".tbs"],
+        "textMate": {
+            "out": "syntaxes/tbs.tmLanguage.json"
+        }
+    }],
+    "out": "src/language-server/generated"
+}

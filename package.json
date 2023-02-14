@@ -21,5 +21,8 @@
     "url": "https://github.com/JairusSW/tbs/issues"
   },
   "homepage": "https://github.com/JairusSW/tbs#readme",
-  "type": "module"
+  "type": "module",
+  "devDependencies": {
+    "typescript": "^4.9.5"
+  }
 }

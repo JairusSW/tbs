@@ -1,0 +1,57 @@
+{
+  "name": "tbs",
+  "scopeName": "source.tbs",
+  "fileTypes": [
+    ".tbs"
+  ],
+  "patterns": [
+    {
+      "include": "#comments"
+    },
+    {
+      "name": "keyword.control.tbs",
+      "match": "\\b(Hello|person)\\b"
+    },
+    {
+      "name": "string.quoted.double.tbs",
+      "begin": "\"",
+      "end": "\""
+    },
+    {
+      "name": "string.quoted.single.tbs",
+      "begin": "'",
+      "end": "'"
+    }
+  ],
+  "repository": {
+    "comments": {
+      "patterns": [
+        {
+          "name": "comment.block.tbs",
+          "begin": "/\\*",
+          "beginCaptures": {
+            "0": {
+              "name": "punctuation.definition.comment.tbs"
+            }
+          },
+          "end": "\\*/",
+          "endCaptures": {
+            "0": {
+              "name": "punctuation.definition.comment.tbs"
+            }
+          }
+        },
+        {
+          "begin": "//",
+          "beginCaptures": {
+            "1": {
+              "name": "punctuation.whitespace.comment.leading.tbs"
+            }
+          },
+          "end": "(?=$)",
+          "name": "comment.line.tbs"
+        }
+      ]
+    }
+  }
+}
