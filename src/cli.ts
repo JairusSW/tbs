@@ -1,9 +1,11 @@
 import "colors";
+import { parseSchema } from "./parser/parser.js";
+import { readFileSync } from "fs";
+import { compileSchema } from "./compiler/compile.js";
+import { Schema } from "./parser/Schema.js";
 const version = "v0.1.0";
 const args = process.argv.slice(2);
-if (args.includes("-v")) {
-  console.log(version);
-} else if (!args.length) {
+if (args.includes("-h") || !args.length) {
   console.log(`
 ╔═══════╗╔═════╗ ╔══════╗
 ╚══╗ ╔══╝║ ╔═╗ ║ ║ ╔════╝
@@ -14,4 +16,49 @@ if (args.includes("-v")) {
   console.log("\nUsage: tbs [command] [flags]");
   console.log("\nCommands:");
   console.log(" - generate -i [in] -o [out] --target [language]\n\tCreate output files for provided schemas compiled to specified language");
+  console.log(" - compile -i [in] -o [out]\n\tCompile schemas into their binary form");
+} else if (args.includes("-v")) {
+  console.log(version);
+} else if (args[0] == "generate") {
+  if (args[1] != "-i") {
+    console.error("No input provided. Cancelling.");
+  } else if (args[3] != "-o") {
+    console.error("No output provided. Cancelling.");
+  } else if (args[5] != "--target") {
+    console.error("No target flag provided. Cancelling.");
+  } else if (!args[6]) {
+    console.error("No target language specified. Cangelling.");
+  } else {
+    const input = args[2]!;
+    const output = args[4]!;
+    const target = args[6]!;
+    console.log(`Running...\n - Target: ${target}\n - Input: ${input}\n - Output: ${output}\n`);
+    const file = readFileSync(input).toString();
+    const parsed = parseSchema(file);
+    console.log(`Building schema ${parsed.name}`);
+    for (let i = 0; i < parsed.keys.length; i++) {
+      console.log(` - ${parsed.keys[i]} -> ${parsed.types[i]}`);
+    }
+    console.log("Done.");
+  }
+} else if (args[0] == "compile") {
+  if (args[1] != "-i") {
+    console.error("No input provided. Cancelling.");
+  } else if (args[3] != "-o") {
+    console.error("No output provided. Cancelling.");
+  } else {
+    const input = args[2]!;
+    const output = args[4]!;
+    console.log(`Running...\n - Input: ${input}\n - Output: ${output}\n`);
+    const file = readFileSync(input).toString();
+    const parsed = parseSchema(file);
+    const compiled = compileSchema(parsed);
+    console.log(`Building schema ${parsed.name}`);
+    for (let i = 0; i < parsed.keys.length; i++) {
+      console.log(` - ${parsed.keys[i]} -> ${parsed.types[i]}`);
+    }
+    console.log(compiled.join(" "));
+    console.log("Done.");
+    console.log(Schema.fromCompiled(compiled));
+  }
 }
