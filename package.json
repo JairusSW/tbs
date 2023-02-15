@@ -7,7 +7,11 @@
   "contributors": [],
   "license": "MIT",
   "scripts": {},
-  "dependencies": {},
+  "dependencies": {
+    "@types/minimist": "^1.2.2",
+    "colors": "^1.4.0",
+    "minimist": "^1.2.8"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/JairusSW/tbs.git"
@@ -23,6 +27,7 @@
   "homepage": "https://github.com/JairusSW/tbs#readme",
   "type": "module",
   "devDependencies": {
+    "@types/node": "^18.13.0",
     "typescript": "^4.9.5"
   }
 }
