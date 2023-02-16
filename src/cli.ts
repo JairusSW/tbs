@@ -34,7 +34,7 @@ if (args.includes("-h") || !args.length) {
     console.log(`Running...\n - Target: ${target}\n - Input: ${input}\n - Output: ${output}\n`);
     const file = readFileSync(input).toString();
     const parsed = parseSchema(file);
-    console.log(`Building schema ${parsed.name}`);
+    console.log(`Generating schema ${parsed.name}`);
     for (let i = 0; i < parsed.keys.length; i++) {
       console.log(` - ${parsed.keys[i]} -> ${parsed.types[i]}`);
     }
@@ -53,7 +53,7 @@ if (args.includes("-h") || !args.length) {
     const file = readFileSync(input).toString();
     const parsed = parseSchema(file);
     const compiled = compileSchema(parsed);
-    console.log(`Building schema ${parsed.name}`);
+    console.log(`Compiling schema ${parsed.name}`);
     for (let i = 0; i < parsed.keys.length; i++) {
       console.log(` - ${parsed.keys[i]} -> ${parsed.types[i]}`);
     }
